@@ -20,6 +20,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.appsdeveloperblog.app.ws.exceptions.UserServiceException;
 import com.appsdeveloperblog.app.ws.ui.model.request.UpdateUserDetailsRequestModel;
 import com.appsdeveloperblog.app.ws.ui.model.request.UserDetailsRequestModel;
 import com.appsdeveloperblog.app.ws.ui.model.response.UserRest;
@@ -41,6 +42,9 @@ public class UserController {
 			// MediaType.APPLICATION_XML_VALUE,
 			MediaType.APPLICATION_JSON_VALUE })
 	public ResponseEntity<UserRest> getUser(@PathVariable String userId) {
+	if(true) throw new UserServiceException("A user serviceexception is thrrown");
+		
+		
 		if (users.containsKey(userId)) {
 			return new ResponseEntity<UserRest>(users.get(userId), HttpStatus.OK);
 		} else {
