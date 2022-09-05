@@ -48,7 +48,7 @@ public class UserController {
 			// MediaType.APPLICATION_XML_VALUE,
 			MediaType.APPLICATION_JSON_VALUE })
 	public ResponseEntity<UserRest> getUser(@PathVariable String userId) {
-	if(true) throw new UserServiceException("A user serviceexception is thrrown");
+	//if(true) throw new UserServiceException("A user serviceexception is thrrown");
 		
 		
 		if (users.containsKey(userId)) {
@@ -79,6 +79,7 @@ public class UserController {
 //		users.put(userId, returnValue);
 
 		UserRest returnValue = userService.createUser(userDetails);
+		users = userService.getUsers();
 		return new ResponseEntity<UserRest>(returnValue, HttpStatus.OK);
 	}
 
